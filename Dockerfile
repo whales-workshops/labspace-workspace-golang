@@ -1,6 +1,9 @@
-FROM dockersamples/labspace-workspace-base:latest
+FROM --platform=$BUILDPLATFORM dockersamples/labspace-workspace-base:latest
 
 USER root
+
+ARG TARGETOS
+ARG TARGETARCH
 
 # ------------------------------------
 # Install Go

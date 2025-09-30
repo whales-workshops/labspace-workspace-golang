@@ -39,8 +39,8 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/labspace-workspace-python:${{ steps.extract_version.outputs.version }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/labspace-workspace-python:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/labspace-workspace-golang:${{ steps.extract_version.outputs.version }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/labspace-workspace-python:golang
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
