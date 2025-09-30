@@ -1,4 +1,6 @@
-name: Create Release and Publish Docker Image
+name: Create Release
+#name: Create Release and Publish Docker Image
+
 
 on:
   push:
@@ -22,25 +24,25 @@ jobs:
           VERSION=${GITHUB_REF#refs/tags/v}
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+      # - name: Set up Docker Buildx
+      #   uses: docker/setup-buildx-action@v3
 
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      # - name: Login to Docker Hub
+      #   uses: docker/login-action@v3
+      #   with:
+      #     username: ${{ secrets.DOCKERHUB_USERNAME }}
+      #     password: ${{ secrets.DOCKERHUB_TOKEN }}
 
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          platforms: linux/amd64,linux/arm64
-          push: true
-          tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/labspace-workspace-golang:${{ steps.extract_version.outputs.version }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/labspace-workspace-golang:latest
+      # - name: Build and push Docker image
+      #   uses: docker/build-push-action@v5
+      #   with:
+      #     context: .
+      #     platforms: linux/amd64,linux/arm64
+      #     push: true
+      #     tags: |
+      #       ${{ secrets.DOCKERHUB_USERNAME }}/labspace-workspace-golang:${{ steps.extract_version.outputs.version }}
+      #       ${{ secrets.DOCKERHUB_USERNAME }}/labspace-workspace-golang:latest
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
