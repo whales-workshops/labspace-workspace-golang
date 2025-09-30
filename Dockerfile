@@ -39,9 +39,9 @@ EOF
 
 USER 1000
 
-# Install Go Language Server as user
-ENV GOPATH=/go
-ENV PATH=$PATH:/go/bin
+#Install Go Language Server as user
+ENV GOPATH="/go"
+ENV PATH="$PATH:/go/bin"
 RUN go install golang.org/x/tools/gopls@latest
 
 

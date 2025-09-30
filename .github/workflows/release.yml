@@ -40,7 +40,7 @@ jobs:
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/labspace-workspace-golang:${{ steps.extract_version.outputs.version }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/labspace-workspace-python:golang
+            ${{ secrets.DOCKERHUB_USERNAME }}/labspace-workspace-golang:latest
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
