@@ -9,7 +9,7 @@ ARG TARGETARCH
 # Install Go
 # ------------------------------------
 ARG GO_VERSION=1.25.1
-ARG TINYGO_VERSION=0.39.0
+
 RUN <<EOF
 wget https://go.dev/dl/go${GO_VERSION}.linux-${TARGETARCH}.tar.gz
 tar -xzf go${GO_VERSION}.linux-${TARGETARCH}.tar.gz -C /usr/local
@@ -26,16 +26,6 @@ mkdir -p /go/pkg/mod
 mkdir -p /go/bin
 chown -R 1000:1000 /go
 EOF
-
-# ------------------------------------
-# Install TinyGo
-# ------------------------------------
-RUN <<EOF
-wget https://github.com/tinygo-org/tinygo/releases/download/v${TINYGO_VERSION}/tinygo_${TINYGO_VERSION}_${TARGETARCH}.deb
-dpkg -i tinygo_${TINYGO_VERSION}_${TARGETARCH}.deb
-rm tinygo_${TINYGO_VERSION}_${TARGETARCH}.deb
-EOF
-
 
 USER 1000
 
