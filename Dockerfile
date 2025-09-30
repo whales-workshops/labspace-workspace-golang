@@ -24,8 +24,11 @@ ENV GOROOT="/usr/local/go"
 RUN <<EOF
 mkdir -p /go/pkg/mod
 mkdir -p /go/bin
-chown -R ${1000}:${1000} /go
+chown -R 1000:1000 /go
 EOF
+
+# Install Go Language Server
+RUN go install -v golang.org/x/tools/gopls@latest
 
 # ------------------------------------
 # Install TinyGo
