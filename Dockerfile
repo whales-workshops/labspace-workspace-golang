@@ -27,9 +27,6 @@ mkdir -p /go/bin
 chown -R 1000:1000 /go
 EOF
 
-# Install Go Language Server
-RUN go install -v golang.org/x/tools/gopls@latest
-
 # ------------------------------------
 # Install TinyGo
 # ------------------------------------
@@ -41,6 +38,13 @@ EOF
 
 
 USER 1000
+
+# Install Go Language Server as user
+ENV GOPATH=/go
+ENV PATH=$PATH:/go/bin
+RUN go install golang.org/x/tools/gopls@latest
+
+
 RUN <<EOF
 code-server --install-extension golang.go
 rm -rf /home/coder/.local/share/code-server/CachedExtensionVSIXs/.trash/*
