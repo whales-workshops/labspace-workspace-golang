@@ -8,7 +8,7 @@ ARG TARGETARCH
 # ------------------------------------
 # Install Go
 # ------------------------------------
-ARG GO_VERSION=1.25.4
+ARG GO_VERSION=1.25.5
 
 RUN <<EOF
 wget https://go.dev/dl/go${GO_VERSION}.linux-${TARGETARCH}.tar.gz
