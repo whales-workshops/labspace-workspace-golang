@@ -1,5 +1,4 @@
-FROM --platform=$BUILDPLATFORM dockersamples/labspace-workspace-base:latest
-
+FROM --platform=$BUILDPLATFORM dockersamples/labspace-workspace-base:v0.20.0
 USER root
 
 ARG TARGETOS

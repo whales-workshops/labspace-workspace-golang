@@ -4,7 +4,7 @@ variable "REPO" {
 }
 
 variable "TAG" {
-  default = "1.25.5_0.0.0"
+  default = "1.25.5_0.0.1"
 }
 
 group "default" {
